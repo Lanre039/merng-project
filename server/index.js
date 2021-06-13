@@ -10,8 +10,10 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req, pubSub }),
 });
 
+const PORT = process.env.PORT || 5000;
+
 server
-  .listen(5000, () => {
+  .listen(PORT, () => {
     mongoose.connect(
       MONGODB_URI,
       {
@@ -29,4 +31,5 @@ server
       }
     );
   })
-  .then((res) => console.log(`Server listening on port: ${res.url}`));
+  .then((res) => console.log(`Server listening on port: ${res.url}`))
+  .catch((err) => console.error(err));

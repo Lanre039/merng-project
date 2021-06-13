@@ -8,7 +8,7 @@ module.exports = {
     async getPosts() {
       try {
         // SORT BY DECENDING ORDER
-        return Post.find().sort({ createdAt: -1 });
+        return await Post.find().sort({ createdAt: -1 });
       } catch (err) {
         throw new Error(err);
       }
